@@ -4,20 +4,22 @@ import {useParams} from 'react-router'
 
 const CountryDetails = () => {
     const {countryName} = useParams()
-
-    const [countryDetails,setCountryDetails] = useState({})
-
+     
+    const [countryDetails,setCountryDetails] = useState([])
+       
     useEffect(()=>{
         const url = `https://restcountries.eu/rest/v2/name/${countryName}`
         fetch(url)
         .then(res=> res.json())
-        .then(data => setCountryDetails(data))
+        .then(data => setCountryDetails(data[0]))
       })
+      console.log(countryDetails)
     return (
         <div>
-            <h1>{countryName}</h1>
             <img src={countryDetails.flag} alt="country flag"/>
-            <h4>Country details{ countryDetails.name}</h4>
+            <h2>{countryName}</h2>
+            
+            <h4>Capital: { countryDetails.capital}</h4>
             <h2>{countryDetails.population}</h2>
         </div>
     );

@@ -27,7 +27,7 @@ const Country = (props) => {
       }
       
       const handleClick = (countryName)=>{
-        const url = '/country/$/{countryName}'
+        const url = `/country/${countryName}`
         history.push(url)
       }
     return (
@@ -50,7 +50,7 @@ const Country = (props) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Link to={`/country/${name}`}>More info</Link>
+          {/* <Link to={`/country/${name}`}>More info</Link> */}
           <Button onClick={()=>handleClick(name)} size="small" color="primary">
            Show Details
           </Button>
